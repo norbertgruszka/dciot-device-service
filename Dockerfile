@@ -5,6 +5,7 @@ WORKDIR /go/src/device-service
 COPY go.mod go.sum ./
 RUN go mod download
 COPY cmd ./cmd
+COPY handlers ./handlers
 RUN CGO_ENABLED=0 GOOS=linux go build -o dciot-device-service ./cmd/main.go
 
 FROM alpine:latest
